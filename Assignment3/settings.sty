@@ -1,0 +1,90 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{settings}[2017/08/27 General Package for LaTeX Reports]
+
+% Packages for encoding.
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+
+% Packages for math notation.
+\RequirePackage{amsmath, amssymb, amsthm}
+
+% Packages for figures and captions.
+\RequirePackage{wrapfig}
+\RequirePackage[labelfont=bf, labelsep=period, margin=3.5em]{caption}
+\RequirePackage{float}
+\RequirePackage{graphicx}
+\graphicspath{ {images/} }
+
+% Automatic centering of figures.
+\g@addto@macro\@floatboxreset\centering
+
+% Formatting for paragraphs.
+\RequirePackage{indentfirst}
+\RequirePackage{setspace}
+\setlength{\parskip}{1em}
+
+% Formatting for section titles.
+\RequirePackage[explicit]{titlesec}
+\RequirePackage{ulem}
+\titleformat{\section}{\bfseries\large}{\thesection}{1em}{\uline{#1}\vspace{-0.5em}}
+\titleformat{\subsection}{\bfseries}{\thesubsection}{1em}{#1\vspace{-0.5em}}
+
+\def\Name{Insert Name Here}
+\def\Date{Insert Date Here}
+\def\Title{Insert Title Here}
+\def\Prefix{Insert Prefix Here}
+\def\Subtitle{Insert Subtitle Here}
+
+% Formatting for margins and headers.
+\RequirePackage{fullpage, fancyhdr}
+\RequirePackage[voffset=1.3em, footskip=3.6em, headheight=1.4em, headsep=2.6em, total={7.5in, 9.4in}]{geometry}
+\let\olddocument\document
+\let\endolddocument\enddocument
+\renewenvironment{document}{\begin{olddocument}
+    \thispagestyle{plain}
+    \vspace*{-3.2em}\vspace*{-\headsep}\vspace*{-\headheight}
+    \begin{center}\framebox[\textwidth]{
+        \vbox{
+            \setstretch{2} \vspace{1em}
+            \if\Name\Date\empty\else
+            \hbox to \textwidth {
+                \quad\Name \hfill \Date\quad
+            }
+            \fi
+            \hbox to \textwidth {
+                \Large \hfill \if\Prefix\empty\else \textbf{\Prefix\ \ } \fi \Title \hfill
+            }
+            \if\Subtitle\empty\else
+            \hbox to \textwidth {
+                \large \hfill \Subtitle \hfill
+            }
+            \fi
+            \vspace{0.7em}
+        }
+    }\end{center}
+    \if\Name\Prefix\Title\empty\else \pagestyle{fancy} \fi
+    \lhead{\Name} \chead{\Prefix} \rhead{\Title}
+}{\end{olddocument}
+}
+
+% Package options.
+\newif\if@noindent
+\DeclareOption{noindent}{\@noindenttrue}
+\newif\if@doublespace
+\DeclareOption{doublespace}{\@doublespacetrue}
+\newif\if@bigmath
+\DeclareOption{bigmath}{\@bigmathtrue}
+\DeclareOption*{\PackageWarning{settings}{Unknown '\CurrentOption'}}
+\ProcessOptions\relax
+
+\if@noindent
+    \setlength\parindent{0pt}
+\fi
+\if@doublespace
+    \renewcommand{\baselinestretch}{2}
+    \captionsetup[table]{font = {stretch = 1.5}}
+    \captionsetup[figure]{font = {stretch = 1.5}}
+\fi
+\if@bigmath
+    \everymath{\displaystyle}
+\fi

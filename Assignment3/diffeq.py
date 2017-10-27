@@ -2,7 +2,7 @@
 import numpy as np
 from matplotlib import rc
 import matplotlib.pylab as plt
-from sys import argv
+from sys import argv, exit
 
 
 """Evaluates the values of x and v for a mass on a spring with t in the interval
@@ -78,7 +78,7 @@ def plot_explicit_euler():
     plt.ylim(-4, 4)
     plt.grid()
     plt.legend()
-    plt.savefig('explicit_euler.png')
+    plt.savefig('images/explicit_euler.png')
 
 
 """Plots the errors in the position and velocity obtained with the explicit
@@ -96,7 +96,7 @@ def plot_explicit_euler_errors():
     plt.ylim(-1, 1)
     plt.grid()
     plt.legend()
-    plt.savefig('explicit_euler_errors.png')
+    plt.savefig('images/explicit_euler_errors.png')
 
 
 """Plots the energy using the explicit Euler method.
@@ -111,7 +111,7 @@ def plot_explicit_euler_energy():
     plt.xlim(0, 15)
     plt.ylim(5, 11)
     plt.grid()
-    plt.savefig('explicit_euler_energy.png')
+    plt.savefig('images/explicit_euler_energy.png')
 
 
 """Plots the maximum errors in the position and velocity obtained with the
@@ -131,7 +131,7 @@ def plot_explicit_euler_max_errors():
     plt.xlim(0, 0.06)
     plt.ylim(0, 0.8)
     plt.grid()
-    plt.savefig('explicit_euler_max_errors.png')
+    plt.savefig('images/explicit_euler_max_errors.png')
 
 
 """Plots the postion and velocity using the implicit Euler method.
@@ -148,7 +148,7 @@ def plot_implicit_euler():
     plt.ylim(-3, 3)
     plt.grid()
     plt.legend()
-    plt.savefig('implicit_euler.png')
+    plt.savefig('images/implicit_euler.png')
 
 
 """Plots the errors in the postion and velocity obtained with the implicit Euler
@@ -166,7 +166,7 @@ def plot_implicit_euler_errors():
     plt.ylim(-0.8, 0.8)
     plt.grid()
     plt.legend()
-    plt.savefig('implicit_euler_errors.png')
+    plt.savefig('images/implicit_euler_errors.png')
 
 
 """Plots the energy using the implicit Euler method.
@@ -181,13 +181,13 @@ def plot_implicit_euler_energy():
     plt.xlim(0, 15)
     plt.ylim(2, 5)
     plt.grid()
-    plt.savefig('implicit_euler_energy.png')
+    plt.savefig('images/implicit_euler_energy.png')
 
 
 """Plots the maximum errors in the position and velocity obtained with the
 implicit Euler method for different step sizes.
 """
-def plot_implicit_euler_energy():
+def plot_implicit_euler_max_errors():
     h = np.arange(0.0002, 0.06, 0.0002)
     x_max_errors = np.zeros(len(h))
     for i in range(len(h)):
@@ -201,7 +201,7 @@ def plot_implicit_euler_energy():
     plt.xlim(0, 0.06)
     plt.ylim(0, 0.8)
     plt.grid()
-    plt.savefig('implicit_euler_max_errors.png')
+    plt.savefig('images/implicit_euler_max_errors.png')
 
 
 """Plots the position and velocity phase space using the explicit, implicit, and
@@ -227,22 +227,7 @@ def plot_phase_space():
         bbox_to_anchor=(0, 0, 1, 1), bbox_transform=plt.gcf().transFigure,
         mode='expand', ncol=4
         )
-    plt.savefig('phase_space.png')
-
-
-"""Plots the energy using the symplectic Euler method.
-"""
-def plot_symplectic_euler_energy():
-    t, x_symplectic, v_symplectic = euler(0, 300, 1, 2, 0.05, 'symplectic')
-
-    plt.clf()
-    plt.plot(t, x_symplectic**2 + v_symplectic**2, 'bo')
-    plt.xlabel('Time')
-    plt.ylabel('Energy')
-    plt.xlim(0, 15)
-    plt.ylim(4.95, 5.25)
-    plt.grid()
-    plt.savefig('symplectic_euler_energy.png')
+    plt.savefig('images/phase_space.png')
 
 
 """Plots the position using the symplectic Euler method, as well as the analytic
@@ -260,13 +245,28 @@ def plot_symplectic_euler():
     plt.ylim(-3, 3)
     plt.grid()
     plt.legend()
-    plt.savefig('symplectic_euler.png')
+    plt.savefig('images/symplectic_euler.png')
+
+
+"""Plots the energy using the symplectic Euler method.
+"""
+def plot_symplectic_euler_energy():
+    t, x_symplectic, v_symplectic = euler(0, 300, 1, 2, 0.05, 'symplectic')
+
+    plt.clf()
+    plt.plot(t, x_symplectic**2 + v_symplectic**2, 'bo')
+    plt.xlabel('Time')
+    plt.ylabel('Energy')
+    plt.xlim(0, 15)
+    plt.ylim(4.95, 5.25)
+    plt.grid()
+    plt.savefig('images/symplectic_euler_energy.png')
 
 
 if __name__ == '__main__':
-    if len(argv) != 1:
+    if len(argv) != 2:
         print "Usage: python diffeq.py [image_name]"
-        return
+        exit(0)
 
     setup()
     if argv[1] == "explicit_euler":
@@ -287,9 +287,9 @@ if __name__ == '__main__':
         plot_implicit_euler_max_errors()
     elif argv[1] == "phase_space":
         plot_phase_space()
-    elif argv[1] == "symplectic_euler_energy":
-        plot_symplectic_euler_energy()
     elif argv[1] == "symplectic_euler":
         plot_symplectic_euler()
+    elif argv[1] == "symplectic_euler_energy":
+        plot_symplectic_euler_energy()
     else:
         print "Error: Image %s not found" % argv[1]
