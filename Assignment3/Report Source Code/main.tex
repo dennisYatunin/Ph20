@@ -21,29 +21,29 @@ The correct value for the energy given the initial conditions is $x^2 + \bigl(\f
 \vfill
 
 \begin{figure}[H]
-\includegraphics{explicit_euler} \hspace{0.7em} \includegraphics{implicit_euler}\\
-\caption{(Left) The positions and velocities of the mass on a spring obtained with the explicit Euler method, using a step size of 0.05. (Right) The positions and velocities obtained with the implicit Euler method, using a step size of 0.05.}
-\label{fig:positionsAndVelocities1}
+    \includegraphics{explicit_euler} \hspace{0.7em} \includegraphics{implicit_euler}\\
+    \caption{(Left) The positions and velocities of the mass on a spring obtained with the explicit Euler method, using a step size of 0.05. (Right) The positions and velocities obtained with the implicit Euler method, using a step size of 0.05.}
+    \label{fig:positionsAndVelocities1}
 \end{figure}
 
 \begin{figure}[H]
-\includegraphics{explicit_euler_errors} \hspace{0.7em} \includegraphics{implicit_euler_errors}\\
-\caption{(Left) The errors in the positions and velocities obtained with the explicit Euler method, using a step size of 0.05. (Right) The errors in the positions and velocities obtained with the implicit Euler method, using a step size of 0.05.}
-\label{fig:errors}
+    \includegraphics{explicit_euler_errors} \hspace{0.7em} \includegraphics{implicit_euler_errors}\\
+    \caption{(Left) The errors in the positions and velocities obtained with the explicit Euler method, using a step size of 0.05. (Right) The errors in the positions and velocities obtained with the implicit Euler method, using a step size of 0.05.}
+    \label{fig:errors}
 \end{figure}
 
 \vfill
 
 \begin{figure}[H]
-\includegraphics{explicit_euler_energy} \hspace{0.7em} \includegraphics{implicit_euler_energy}\\
-\caption{(Left) The energy obtained with the explicit Euler method, using a step size of 0.05. (Right) The energy obtained with the implicit Euler method, using a step size of 0.05.}
-\label{fig:energy1}
+    \includegraphics{explicit_euler_energy} \hspace{0.7em} \includegraphics{implicit_euler_energy}\\
+    \caption{(Left) The energy obtained with the explicit Euler method, using a step size of 0.05. (Right) The energy obtained with the implicit Euler method, using a step size of 0.05.}
+    \label{fig:energy1}
 \end{figure}
 
 \begin{figure}[H]
-\includegraphics{explicit_euler_max_errors} \hspace{0.7em} \includegraphics{implicit_euler_max_errors}\\
-\caption{(Left) The maximum error in positions obtained with the explicit Euler method for times in the interval $[0, 15)$, using step sizes in the range $[0.0002, 0.0058]$. (Right) The maximum error in positions obtained with the implicit Euler method, using step sizes in the range $[0.0002, 0.0058]$.}
-\label{fig:maxErrors}
+    \includegraphics{explicit_euler_max_errors} \hspace{0.7em} \includegraphics{implicit_euler_max_errors}\\
+    \caption{(Left) The maximum error in positions obtained with the explicit Euler method for times in the interval $[0, 15)$, using step sizes in the range $[0.0002, 0.0058]$. (Right) The maximum error in positions obtained with the implicit Euler method, using step sizes in the range $[0.0002, 0.0058]$.}
+    \label{fig:maxErrors}
 \end{figure}
 
 The error in position depends on the chosen step size. By plotting the maximum errors with varying step sizes, I found that the error for the explicit Euler method increases superlinearly as the step size increases, and that the error for the implicit Euler method increases sublinearly as the step size increases (see Figure \ref{fig:maxErrors}).
@@ -57,23 +57,23 @@ I then plotted the energy obtained using the symplectic Euler method, which osci
 Finally, I plotted the positions obtained using the symplectic Euler method, as well as those obtained analytically, for times very far into the future (see Figure \ref{fig:positionsAndVelocities2}). This revealed that the oscillations predicted by the symplectic Euler method were slightly ahead of those predicted analytically.
 
 \begin{figure}[H]
-\includegraphics{phase_space}\\
-\caption{The phase space diagram for the positions and velocities obtained with all three Euler methods, using a step size of 0.05, as well as those obtained analytically.}
-\label{fig:phaseSpace}
+    \includegraphics{phase_space}\\
+    \caption{The phase space diagram for the positions and velocities obtained with all three Euler methods, using a step size of 0.05, as well as those obtained analytically.}
+    \label{fig:phaseSpace}
 \end{figure}
 
 \vfill
 
 \begin{figure}[H]
-\includegraphics{symplectic_euler_energy}\\
-\caption{The energy obtained with the symplectic Euler method, using a step size of 0.05}
-\label{fig:energy2}
+    \includegraphics{symplectic_euler_energy}\\
+    \caption{The energy obtained with the symplectic Euler method, using a step size of 0.05}
+    \label{fig:energy2}
 \end{figure}
 
 \begin{figure}[H]
-\includegraphics{symplectic_euler}\\
-\caption{The positions obtained with the symplectic Euler method, using a step size of 0.05, as well as the positions obtained analytically.}
-\label{fig:positionsAndVelocities2}
+    \includegraphics{symplectic_euler}\\
+    \caption{The positions obtained with the symplectic Euler method, using a step size of 0.05, as well as the positions obtained analytically.}
+    \label{fig:positionsAndVelocities2}
 \end{figure}
 
 \end{document}
